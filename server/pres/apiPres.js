@@ -52,11 +52,11 @@ const apiServ = {
           app.use(methodOverride('_method'))
           
           app.get('/', checkAuthenticated, (req, res) => {
-            res.render('index.ejs', { name: req.user.name })
+            res.render('../../client/views/index.ejs', { name: req.user.name })
           })
           
           app.get('/login', checkNotAuthenticated, (req, res) => {
-            res.render('login.ejs')
+            res.render('../../client/views/login.ejs')
           })
           
           app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -66,7 +66,7 @@ const apiServ = {
           }))
           
           app.get('/register', checkNotAuthenticated, (req, res) => {
-            res.render('register.ejs')
+            res.render('../../client/views/register.ejs')
           })
           
           app.post('/register', checkNotAuthenticated, async (req, res) => {

@@ -54,8 +54,9 @@ const business = {
         let numberOfUsersRemoved = data.removeUser(user);
         if(numberOfUsersRemoved) return { success: true, message: "User removed successfully." };
         else return { success: false, message: "User ID not found." };
-    }
+    },
 
+    
 };
 
 // Export business object
