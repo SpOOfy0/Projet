@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>Youtube</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Youtube videos</h1>
+        <div class="youtube_container row"></div>
+        <div id="player" class="col-md-6"></div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const videoContainer = $(".youtube_container");
+            const player = $("#player");
+            
+            // Appel à l'API YouTube pour récupérer les données des vidéos
+            $.get("https://www.googleapis.com/youtube/v3/search", {
+                key: "AIzaSyD5gtH7gegedWAWOiHdrKI7ekO6n76FR2s",
+                part: "snippet",
+                q: "sécurité et envirenement",
+                type: "video",
+                maxResults: 5
+            }).done(function(response) {
+                const videos = response.items;
+                
+                // Parcours des vidéos et création des éléments HTML correspondants
+                videos.forEach(function(video) {
+                    const videoId = video.id.videoId;
+                    const videoTitle = video.snippet.title;
+                    const videoThumbnail = video.snippet.thumbnails.medium.url;
+                    
+                    const videoElement = `
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img class="card-img-top" src="${videoThumbnail}" alt="${videoTitle}" data-video-id="${videoId}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${videoTitle}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    videoContainer.append(videoElement);
+                });
+            }).fail(function(error) {
+                console.log("Erreur lors de la récupération des vidéos :", error);
+            });
+            
+            // Ajouter un événement de clic pour le démarrage de la vidéo dans l'iframe
+            videoContainer.on("click", "img", function() {
+                const videoId = $(this).attr("data-video-id");
+                const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+                
+                player.html(`<iframe width="100%" height="315" src="${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`);
+            });
+        });
+    </script>
+</body>
+</html>

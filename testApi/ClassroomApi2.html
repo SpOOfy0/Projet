@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Affichage des cours Google Classroom</title>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script>
+    function start() {
+      gapi.client.init({
+        'apiKey': 'AIzaSyBleWx_5ZPsrc3qMSPqQ9XwSKhjD00ibek'
+      }).then(function() {
+        return gapi.client.request({
+          'path': 'https://classroom.googleapis.com/v1/courses',
+          'headers': {
+            'Authorization': 'Bearer ' + 'ya29.a0AWY7CklH9DcXyucs_u16PCiosaUcwnZuJpmDfVMa4yoyKkoCCoHTEehC0dz3_BXpuojJvz7jy75-4eV8FaHUYQ72b3jdBUnn9rpzXcNsz0kw-a5bv290ftaGJpe_sqRx3_HnFEMpkOhDIMcU_Ty7FfyhybbvaCgYKAb0SARISFQG1tDrpAWskRgzHH1E2MEjTTcezfg0163'
+          }
+        });
+      }).then(function(response) {
+        console.log(response.result);
+        // Parcourir les cours et les afficher
+        var courses = response.result.courses;
+        for (var i = 0; i < courses.length; i++) {
+          var course = courses[i];
+          console.log(course.name);
+          // Afficher les cours dans un élément de liste
+          var listElement = document.createElement('li');
+          var listText = document.createTextNode(course.name);
+          listElement.appendChild(listText);
+          document.getElementById('course-list').appendChild(listElement);
+        }
+      }, function(reason) {
+        console.log('Erreur: ' + reason.result.error.message);
+      });
+    }
+  </script>
+</head>
+<body onload="start()">
+  <h1>Liste des cours</h1>
+  <ul id="course-list"></ul>
+</body>
+</html>

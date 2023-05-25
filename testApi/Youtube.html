@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>Youtube</title>
+    <script type="text/javascript" src="YoutubeData.js"></script>
+</head>
+<body>
+    <h1>Youtube videos</h1>
+    <div class="youtube_container"></div>
+    <div id="player"></div>
+    
+    <script>
+        // Ajouter un événement de clic pour l'ouverture de la vidéo dans l'iframe
+        const videoContainer = document.querySelector(".youtube_container");
+        videoContainer.addEventListener("click", function(event) {
+         event.preventDefault();
+         if(event.target.tagName === "IMG") {
+            const videoId = event.target.getAttribute("data-video-id");
+            const videoUrl = "https://www.youtube.com/embed/" + videoId;
+            document.getElementById("player").innerHTML = '<iframe width="560" height="315" src="'+ videoUrl +'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        }
+});
+
+    </script>
+</body>
+</html>
