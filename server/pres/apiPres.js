@@ -50,6 +50,12 @@ const apiServ = {
           app.use(passport.initialize())
           app.use(passport.session())
           app.use(methodOverride('_method'))
+
+          // Define a route to retrieve all clients and return them as a JSON response
+          app.get('/api/clients/all', (req,res) => {   
+              const clients = business.getAllClients();
+              res.status(200).json(clients);
+          })
           
           app.get('/', checkAuthenticated, (req, res) => {
             res.render('../../client/views/index.ejs', { name: req.user.name })
@@ -64,7 +70,23 @@ const apiServ = {
             failureRedirect: '/login',
             failureFlash: true
           }))
+
+      
+
+          app.post('/api/clients', (req, res) => {
+            let message = business.addUser(req.body);
+            res.status(200).send(message);
+        })
+
+          app.post('/api/clients', (req, res) => {
+            let message = business.addCoursesToUser(req.body);
+            res.status(200).send(message);
+        })
           
+          app.delete('/api/clients', (req, res) => {
+            let message = business.removeCourseFromClient(req.body);
+            res.status(200).send(message);
+        })
           app.get('/register', checkNotAuthenticated, (req, res) => {
             res.render('../../client/views/register.ejs')
           })
@@ -98,11 +120,6 @@ const apiServ = {
           
           app.delete('/logout', (req, res) => {
             req.logout(function(err) {
-              if (err) {
-                // Gérer l'erreur ici
-                return next(err);
-              }
-              // Rediriger l'utilisateur vers une page appropriée après la déconnexion
               res.redirect('/login');
             });
           });

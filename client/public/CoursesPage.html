@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="./js/AddCorses.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -82,7 +84,7 @@
     <!-- Main body-->
     <div class="container main-bd">
         <div class="row">
-
+    
             <!-- Main Body Left -->
             <div class="col-lg-8 main-bd-left">
                 <div class="main-bd-left-con">
@@ -95,31 +97,57 @@
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="ex1-tab-2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
                                 aria-controls="ex1-tabs-2" aria-selected="false">Video</a>
-                                <div class="tab-pane fade show active" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                                    <div class="container">
-                                        
-                                        <div class="youtube_container row"></div>
-                                        <div id="player" class="col-md-6"></div>
-                                    </div>
-                                </div>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="ex1-tab-3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
                                 aria-controls="ex1-tabs-3" aria-selected="false">Quiz</a>
                         </li>
-                        
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="ex1-tab-4" data-bs-toggle="tab" href="#ex1-tabs-4" role="tab"
+                                aria-controls="ex1-tabs-4" aria-selected="false">Finish</a>
+                        </li>
                     </ul>
-
+    
                     <!-- Tabs Content -->
                     <div class="tab-content" id="ex1-content">
-                       
+                        <div class="tab-content" id="ex1-content">
+                            <div class="tab-pane fade show" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                              <a id="Cours1" href="./Courses/Resume_Calcul_diff.pdf" class="course-link">
+                                Cour 1
+                                <button class="donne-button">Donne</button>
+                              </a><br>
+                              <a id="Cours2" href="./Courses/TDL-Lecture6-corrige.pdf" class="course-link">
+                                Cour 2
+                                <button class="donne-button">Donne</button>
+                              </a><br>
+                              <a id="Cours3" href="./Courses/TDL-Lecture6.pdf" class="course-link">
+                                Cour 3
+                                <button class="donne-button">Donne</button>
+                              </a><br>
+                              <a id="Cours4" href="./Courses/TD 2 - Corrections.pdf" class="course-link">
+                                Cour 4
+                                <button class="donne-button">Donne</button>
+                              </a>
+                            </div>
+                          </div>
+                          
+                          
+                        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                            <div class="container">
+                                <div class="youtube_container row"></div>
+                                <div id="player" class="col-md-6"></div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                            <!-- Contenu du quiz -->
+                        </div>
+                        <div class="tab-pane fade" id="ex1-tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
+                            <!-- Contenu de la page de fin -->
+                        </div>
                     </div>
-                </div> 
-            
-
-            </div>
-        </div>
-    </div>
+                </div>
+            </div
+    
 
     
 
@@ -196,6 +224,35 @@
                 player.html(`<iframe width="100%" height="315" src="${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`);
             });
         });
+</script>
+<script>
+    // Sélectionnez tous les éléments <a> contenant les boutons
+const courseLinks = document.querySelectorAll('#ex1-tabs-1 a');
+
+// Parcourez les éléments <a> et ajoutez des événements de clic aux boutons
+courseLinks.forEach(courseLink => {
+  const viewButton = courseLink.querySelector('.view-button');
+  const downloadButton = courseLink.querySelector('.download-button');
+
+  viewButton.addEventListener('click', (event) => {
+    // Empêcher le comportement par défaut du bouton
+    event.preventDefault();
+
+    // Action à effectuer lors du clic sur le bouton "View"
+    // Par exemple, redirection vers le lien du cours
+    window.location.href = courseLink.getAttribute('href');
+  });
+
+  downloadButton.addEventListener('click', (event) => {
+    // Empêcher le comportement par défaut du bouton
+    event.preventDefault();
+
+    // Action à effectuer lors du clic sur le bouton "Download"
+    // Par exemple, téléchargement du fichier du cours
+    window.open(courseLink.getAttribute('href'), '_blank');
+  });
+});
+
 </script>
 
 </html> 

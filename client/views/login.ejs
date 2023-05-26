@@ -6,55 +6,69 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <style>
     body {
-      background-color: #F4F4F4;
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
     }
-
+    
     main {
-      margin: 2rem auto;
-      max-width: 800px;
-    }
-
-    main h1 {
-      font-family: cursive;
-      font-size: 2.5rem;
-      color: #000000;
       text-align: center;
-      margin-bottom: 2rem;
-      text-align: center;
+      margin-top: 3rem;
     }
-
+    
     form {
-      width: 50em;
-      padding: 30px;
-      margin-left: auto;
-      margin-right: auto;
-      border: 1px solid #f1f1f1;
-      background: #fff;
-      box-shadow: 0 0 20px 0 rgb(0, 0, 0);
+      width: 30rem;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
-
+    
     label {
       font-weight: bold;
     }
-
-    .btn-primary {
-      position: absolute;
-      right: 20px;
-      background-color: rgb(41, 175, 41);
-      transition: all 0.6s;
+    
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
-
-    .btn-primary:hover {
-      background-color: forestgreen;
+    
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #80bdff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     }
-
-    .btn-secondary {
-      background-color: #69b3dd;
-      transition: all 0.6s;
+    
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out;
     }
-
-    .btn-secondary:hover {
-      background-color: #417694;
+    
+    button[type="submit"]:hover {
+      background-color: #0069d9;
+    }
+    
+    .register-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #007bff;
+      text-decoration: none;
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -70,12 +84,14 @@
   </main>
 
   <div class="d-flex justify-content-center">
-    <form style="width:30rem; position:relative; top:2rem;" action="/login" method="POST">
+    <form style="width:30rem; margin: 0 auto; background-color: #fff; padding: 2rem; border-radius: 5px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);" action="/login" method="POST">
       <div class="row">
         <div class="col">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" class="form-control" required>
         </div>
+      </div>
+      <div class="row">
         <div class="col">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" class="form-control" required>
@@ -83,14 +99,14 @@
       </div>
       <br>
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 text-center">
           <button type="submit" class="btn btn-primary">Login</button>
         </div>
       </div>
     </form>
   </div>
   
-  <a href="/register">Register</a>
+  <a href="/register" class="register-link">Register</a>
 
   <script>
     const form = document.querySelector('form');

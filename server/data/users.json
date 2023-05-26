@@ -1,1 +1,37 @@
-[{"id":"1621523536789","name":"John Doe","email":"john@example.com","password":"$2b$10$7HnJifSMayuh.qnnh4cmO.lENiGeFrNJHqSRJ3/28cCOFPvRcKTlq"},{"id":"1621523551234","name":"Jane Smith","email":"jane@example.com","password":"$2b$10$pRyKZlfx53dR.A8.4lZ8xOmqlJdWgByUjXaFbAdoH4GZbrE2jqD5C"},{"id":"1684986975176","name":"w","email":"w@w","password":"$2b$10$bwUF8tIaCdXgzyvd27bBiezF71oBLmVz0QVwsQUX7u21oZQMXNGtG"},{"id":"1685001126607","name":"zz","email":"z@z","password":"$2b$10$Vqybflg5qJVYiGHEvtFi.OClt0PrhFLA73RZHJvtkUeCblTYGpzgu"},{"id":"1685008144748","name":"f","email":"f@f","password":"$2b$10$z8o2WlfODJ6H7pE9mO58xeM9kRSIAkZHp4gR.PBe/kzEkAhnABX2m","cours":["cours1","cours2"]}]
+[
+    {
+      "id": "1621523536789",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "$2b$10$7HnJifSMayuh.qnnh4cmO.lENiGeFrNJHqSRJ3/28cCOFPvRcKTlq",
+      "courses": ["cours1", "cours3", "cours5"]
+    },
+    {
+      "id": "1621523551234",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "password": "$2b$10$pRyKZlfx53dR.A8.4lZ8xOmqlJdWgByUjXaFbAdoH4GZbrE2jqD5C",
+      "courses": ["cours2", "cours4"]
+    },
+    {
+      "id": "1684986975176",
+      "name": "w",
+      "email": "w@w",
+      "password": "$2b$10$bwUF8tIaCdXgzyvd27bBiezF71oBLmVz0QVwsQUX7u21oZQMXNGtG",
+      "courses": ["cours1", "cours3"]
+    },
+    {
+      "id": "1685001126607",
+      "name": "zz",
+      "email": "z@z",
+      "password": "$2b$10$Vqybflg5qJVYiGHEvtFi.OClt0PrhFLA73RZHJvtkUeCblTYGpzgu",
+      "courses": ["cours1", "cours2", "cours3", "cours4", "cours5"]
+    },
+    {
+      "id": "1685008144748",
+      "name": "f",
+      "email": "f@f",
+      "password": "$2b$10$z8o2WlfODJ6H7pE9mO58xeM9kRSIAkZHp4gR.PBe/kzEkAhnABX2m",
+      "courses": ["cours4"]
+    }
+  ]

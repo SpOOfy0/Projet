@@ -1,4 +1,2745 @@
-<h1>Hi <%= name %></h1>
-<form action="/logout?_method=DELETE" method="POST">
-  <button type="submit">Log Out</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Geeks React </title>
+    <!-- Auto Refresher -->
+    <meta http-equiv="refresh" content="-1">
+    <!-- Bootstrap and CSS Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <style>
+      :root{
+    --fs-heading: 2.5rem;
+    --fs-para: 1.25rem;
+    --bp-left: 0.5rem;
+    --bp-right: 0.5rem;
+    
+}
+*{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    padding: 0rem;
+    margin: 0rem;
+    box-sizing: border-box;
+}
+body{
+    background-color: #F1F5F9;
+}
+.navbar{
+    background-color: #FFFFFF;
+    padding-bottom: 0rem;
+    height: 3.5rem;
+    padding: 0.5rem; 
+}
+#navbar-container{
+    padding-left: 0.5rem;
+    padding-right: 0;
+}
+#logo {
+    padding-top: 0.2rem;
+    padding-bottom: 0.25rem;
+}
+#logo img{
+    width: 112;
+    height: 29;
+}
+.navbar-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nav-form{
+    position: relative;
+    height: 2.5rem;
+    width: 15.5rem;
+    box-shadow: none;
+    margin: 0rem;
+    margin-left: 1.200rem;
+    
+}
+
+#nav-form input{
+    border: 1px solid #cbd5e1;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    padding-top: 0.35rem;
+    padding-left: 2.455rem!important;
+    margin-right: 0rem !important;
+}
+#nav-form input::placeholder{
+    font-family: 'Inter', sans-serif;
+    opacity: 0.7;
+    font-size: 0.875rem;
+}
+#nav-form-si{
+    box-sizing: border-box;
+    position: absolute;
+    left: 1.080rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.79rem;
+}
+/* Dropdown Button */
+.dropbtn {
+    font-size: 0.875rem;
+    border: none;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    padding-left: 0.375rem;
+    padding-right: 0.4097rem;
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    margin-left: 0.05rem;
+}
+#first-nav-btn{
+    margin-left: 0rem;
+}
+
+/* The container <div> - needed to position the dropdown content */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown:hover .dropdown-content {
+    opacity: 1;    
+    -webkit-transform: translateY(-1.25rem);
+    transform: translateY(-1.25rem);
+    transition: all .3s ease-in;
+    visibility: visible;
+    animation-direction: alternate;
+}
+.dropdown-content {
+    transition-duration: 0.3s;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 2.8125rem;
+    left: -12rem; /* Positionner le menu à gauche */
+    background-color: white;
+    box-shadow: 0rem 0.5rem 1rem 0rem rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0.625rem;
+    min-width: 12rem;
+    font-size: 0.875rem;
+    line-height: 1.2rem;
+    margin: 1.125rem 0;
+    padding: 1rem 0;
+    padding-left: 0.25rem;
+}
+
+#down-icon{
+    font-size: 0.625rem;
+    margin-left: 0.25rem;
+    padding-top: 0.3125rem !important;
+    color: black;
+    opacity: 1;
+    font-weight: bolder;
+}
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+    font-size: 0.875rem;
+    color: black;
+    padding: 0.375rem 1rem;
+    text-decoration: none;
+    display: block;
+    margin: 0rem;
+}
+.inner-item a{
+    padding-left: 1rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    font-size: 0.875rem;
+    
+}
+#right-icon{
+    color: black;
+    text-decoration: none;
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 400;
+    margin: 0rem;
+    padding: 0rem;
+    padding-right: 1.25rem;
+    padding-top: 0.5rem;
+    
+}
+.inner-item-NB{
+    background-color: #754FFE;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.4375rem;
+    font-size: 0.75rem;
+    color: white;
+    border-radius: 0.3125rem;
+    display: inline;
+    height: fit-content;
+    font-weight: 500;
+}
+.title{
+    text-decoration: none;
+    color: #64748b;
+    font-size: .6875rem;
+    font-weight: 500;
+    letter-spacing: 0.0625rem;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    padding: 0.25rem 1.2rem;
+    font-family: Inter,"sans-serif";
+}
+.devider{
+    margin: auto;
+    width: 90%;
+    border: 0;
+    border-top: 0.125rem solid #e2e8f0;
+}
+.bi-three-dots{
+    font-size: 1rem;
+}
+
+.dropdown-inner-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    min-width: 12rem;
+ 
+}
+
+#docCon, #stackCon, #stackCon span, #docCon span{
+   
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
+    color: black;
+    text-decoration: none;
+    
+}
+
+/* Nav Right Side */
+
+#nav-right{
+    padding: 0rem;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    margin-bottom: 0rem;
+    width: fit-content;
+}
+.nav-right-item{
+    margin-left: 0.5rem;
+    list-style-type: none;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    font-size: 0.875rem;
+    overflow: visible;
+    background-color: #f1f5f9;
+    color: #94A3B8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.bi-brightness-high-fill{
+    font-size: 1.5rem;
+    opacity: 1;
+}
+.notiIcon{
+    box-sizing: border-box;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 0.125rem solid white;
+    background-color: #38A169;
+    position: absolute;
+    bottom: 0rem;
+    right: 5%;
+}
+.bellIcon{
+    background-color: #754FFE;
+    top: 0.0625rem;
+    right: 10%;
+}
+.nav-right-item img{
+    border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* NAVBAR ENDS HERE */
+/* Banner */
+
+.banner{
+    background-color: rgb(117, 79, 254);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.banner-container{
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 1320px;
+    padding-top: 3.5rem;
+    padding-bottom: 7.5rem;
+    
+}
+.banner-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+.banner-text h1{
+    color: #fff;
+    font-weight: 600;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--fs-heading);
+    margin-bottom: 0.5rem;
+    letter-spacing: -.02rem;
+    line-height: 1.2;
+    box-sizing: border-box;
+    
+}
+.banner-text p{
+    color: #FFFFFF;
+    font-size: var(--fs-para);
+    font-weight: 500;
+    line-height: 1.6em;
+    letter-spacing: -.03rem;
+    margin-bottom: 2.5rem;
+    
+    
+}
+.banner-tags{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 0.875rem;
+}
+.bt-bookmark, .bt-enrolled, .bt-stars, .bt-inter{
+    font-size: 0.875rem;
+    margin-left: 1.5rem;
+}
+.bt-bookmark{
+    
+    margin-left: 0rem;
+}
+.bt-bookmark i{
+    font-size: 0.70rem;
+    margin: 0rem;
+    padding: 0rem;
+}
+.bt-enrolled{
+    margin-left: 1rem;
+    font-size: 0.875rem;
+    font-style: normal;
+}
+.bt-enrolled i{
+    font-size: 0.775rem;
+    font-style: normal;
+}
+.bi-star-fill, .bi-star-half{
+    font-size: 0.65rem;
+    color: #F59E0B;
+    margin: 0rem;
+    padding: 0rem;
+}
+.bi-star-half{
+    margin-right: 0.4rem;
+}
+
+
+
+/* Banner Ends */
+
+
+/* Main Body */
+
+.main-bd{
+    /* border: 1px solid black; */
+
+
+}
+.main-bd-left{
+    margin-top: -3.57rem!important;
+    margin-bottom: 1.5rem;
+}
+.main-bd-left-con{
+    border-radius: 0.5rem;
+    background-color: #FFFFFF;
+}
+.nav-tabs{
+    padding-bottom: 0.05rem;
+}
+.nav-tabs li{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+}
+.nav-tabs li:hover a{
+    border: none;
+    border-bottom: 2px solid blue !important;
+    color: blue;
+}
+#ex1-tab-1, #ex1-tab-2, #ex1-tab-3, #ex1-tab-4, #ex1-tab-5{
+    color: #64748b;
+    font-size: 0.875rem;
+    padding: 1.05rem 0rem;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom: 2px solid blue !important;
+
+}
+
+
+
+
+.tab-content{
+    /* border: 1px solid black; */
+    padding: 1.5rem;
+    padding-top: 1rem;
+}
+#collapseExample{
+    transition-duration: 0.3s;
+    color: blue;
+}
+
+
+
+/* contents tab */
+.list-item-con{
+    margin: 0rem;
+}
+.list-item{
+    text-decoration: none;
+    display: block;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    color: #1e293b;
+    font-size: 1rem;
+    font-weight: 400;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+
+}
+.inner-tab-listitem{
+
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    height: 2rem;
+    
+}
+.inner-tab-listitem span{
+    color: #64748b;
+    font-size: 0.875rem;
+    
+}
+.inner-tab-con{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border: 1px solid black;
+}
+.inner-tab-listitem i{
+    padding: 0.4rem 0.5rem;
+    background-color: #f1f5f9;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    font-size: 0.875rem;
+
+}
+
+/* description tab */
+
+.dtab-con{
+}
+.dtab-heading-con{
+    
+    margin-top: 0.50rem;
+    margin-bottom: 1.6rem;
+}
+#dtab-heading{
+    color: #1E293B;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-family: Inter,"sans-serif";
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 0;
+    letter-spacing: -0.022rem;
+}
+#dtab-con p{
+    margin-bottom: 1rem;
+    margin-top: 0;
+    box-sizing: border-box;
+    color: #64748B;
+    font-size: 0.866rem;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: Inter, 'sans-serif';
+}
+
+
+#dtab-con h4{
+    color: #1E293B;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-family: Inter, 'sans-serif';
+    line-height: 1.5;
+    margin-top: 0; 
+}
+#dtab-subheading-list{
+    overflow: auto;
+    margin-bottom: 1rem;
+}
+#dtab-subheading-list i{
+    color: #3EA169;
+    font-size: 0.875rem;
+    margin-top: 0.3rem;
+}
+
+.dtab-list-con{
+    margin-bottom: 0.5rem;
+    
+}
+.dtab-list-con p{
+    margin-bottom: 0;
+}
+
+
+/* Review Tab */
+#rtab-heading{
+    color: #1E293B;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-family: Inter,"sans-serif";
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    letter-spacing: -0.022rem;
+}
+#rtab-rpanel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+}
+#rtab-reviews{
+    /* border: 1px solid black; */
+}
+
+#rtab-rpanel-num{
+    padding-left: 0rem;
+    padding-right: 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#rtab-rpanel-num h3{
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.05rem;
+    color: #1E293B;
+    margin-bottom: 0.5rem;
+    font-family: Inter, 'sans-serif';
+}
+#rtab-rpanel-num p{
+    color: #64748B;
+    font-size: 0.75rem;
+}
+.rtab-rpanel-bar{
+    height: fit-content;
+    
+}
+.rating-bar-con{
+
+    height: 6px;
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
+    background-color: #cbd5e1;
+    overflow: hidden;
+}
+.rating-bar-color{
+    background-color: #F59E0B;
+    width: 50%;
+    height: 6px;
+}
+.rtab-rpanel-bar div:nth-child(2) div{
+    width: 36%;
+}
+.rtab-rpanel-bar div:nth-child(3) div{
+    width: 9%;
+}
+.rtab-rpanel-bar div:nth-child(4) div{
+    width: 3%;
+}
+.rtab-rpanel-bar div:nth-child(5) div{
+    width: 2%;
+}
+.rtab-rpanel-percent{
+    padding: 0;
+    margin: 0;
+}
+.rtab-rpanel-row{
+
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: fit-content;
+    
+    
+}
+.rtab-rpanel-row span{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* margin-top: -13px; */
+}
+.rtab-rpanel-row span .bi-star-fill{
+    font-size: 0.6rem;
+    margin: 0;
+    padding: 0px;
+    margin-right: 0.25rem;
+}
+
+.rtab-rpanel-row p{
+    margin: 0;
+    padding: 0;
+    font-size: 0.875rem;
+    color: #64748b;
+    text-align: left;
+}
+.rtab-reviews-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+
+}
+.rtab-reviews-header h4{
+    color: #1E293B;
+    font-size: 1.25rem;
+    font-family: Inter, 'sans-serif';
+}
+.rtab-reviews-img{
+    border-radius: 50%;
+    
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    background-image: url(images/rtab-r1.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.rtab-reviews-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1rem;
+}
+.rtab-reviews-info h4{
+    color: #1e293b;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    display: inline;
+    
+}
+.rtab-reviews-info-stars{
+    margin-bottom: 0.5rem;
+}
+.rtab-reviews-info p{
+    color: #64748B;
+    font-size: 0.875rem;
+    margin-top: 0rem;
+}
+.rtab-reviews-info button{
+    display: inline;
+    font-size: 0.75rem;
+    padding: 0.22rem 0.75rem;
+    margin-left: 1rem;
+    background-color: #754ffe;
+    color: #fff;
+    line-height: 1.6;
+    border-radius: 0.375rem;
+    border: none;
+}
+.rtab-reviews-info button:nth-child(2){
+    margin-left: 0rem;
+    background-color: #fff;
+    color: #754ffe;
+    border: 1px solid black;
+}
+.rtab-reviews-feedback{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.rtab-reviews-info-name{
+    /* display: flex;
+    justify-content: flex-start; */
+}
+.rtab-reviews-info-name p{
+    color: #64748B;
+    font-size: 0.75rem;
+    display: inline;
+}
+
+
+/* Transcript Tab */
+#ttab-heading{
+    color: #1E293B;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-family: Inter,"sans-serif";
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    letter-spacing: -0.022rem;
+}
+#ttab-con p{
+    font-size: 0.866rem;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: Inter, 'sans-serif';
+    margin-bottom: 1.5rem; 
+}
+#ttab-con h4{
+    color: #1E293B;
+    font-size: 1rem;
+    margin-bottom: 0.50rem;
+    font-family: Inter, 'sans-serif';
+    line-height: 1.5;
+    margin-top: 0; 
+}
+#ttab-con-secondP{
+    margin-bottom: 1rem !important;
+}
+.ttab-transcript-title{
+    color: #754FFE;
+    font-size: 1rem;
+    margin-left: 0.70rem;
+    margin-bottom: 0.5rem;
+}
+
+
+/* FAQ Tab */
+#ftab-con{
+    margin-top: 0.5rem;
+}
+#ftab-heading{
+    color: #1E293B;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-family: Inter,"sans-serif";
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 0;
+    letter-spacing: -0.022rem;
+}
+
+#ftab-con p{color: #64748B;
+    font-size: 0.866rem;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: Inter, 'sans-serif';
+    margin-bottom: 1.5rem;
+
+}
+#ftab-con h4{
+    color: #1E293B;
+    font-size: 1rem;
+    margin-bottom: 0.50rem;
+    font-family: Inter, 'sans-serif';
+    line-height: 1.5;
+    margin-top: 0; 
+}
+
+
+
+
+
+
+/* Main Body Right Side (Cards Side) */
+.main-bd-right{
+    margin-top: -12rem;
+}
+
+.mb-js-card{
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(17,24,39,.09);
+    margin-bottom: 1.5rem;
+    padding-top: 0.25rem;
+    box-sizing: border-box;
+}
+
+.js-card-img{
+    box-sizing: border-box;
+    margin: 0.30rem;
+    margin-top: 0rem;
+    box-sizing: border-box;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-image: url(images/card3.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+.js-card-body{
+    /* background-color: ; */
+    padding: 1.5rem 1.5rem;
+    
+}
+.js-card-price{
+    margin-bottom: 1rem;
+}
+.js-card-price span{
+    font-weight: 800;
+    color: rgba(15,23,42,1);
+    margin-right: 0.3rem!important;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    letter-spacing: -.002rem;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+.js-card-price del{
+    color: #64748b;
+    opacity: 1;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.js-card-btn{
+    box-sizing: border-box;
+}
+.js-card-btn1{
+    margin-bottom: 0.5rem!important;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.6;
+    border-radius: 0.375rem;
+    color: #fff;
+    box-shadow: inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 1px rgba(0,0,0,.075);
+}
+.js-card-btn2{
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.6;
+    border-radius: 0.375rem;
+    box-shadow: inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 1px rgba(0,0,0,.075);
+}
+
+
+/* List Cards */
+
+.mb-list-card{
+    box-shadow: 0 1px 3px rgba(17,24,39,.09);
+    margin-bottom: 1.5rem!important;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.list-card-header{
+    padding: 1rem 1.5rem;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #e2e8f0;
+}
+.list-group-item{
+    color: #64748B;
+    font-size: 0.875rem;
+    border-bottom-width: 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-bottom: 0.8075rem;
+    padding-top: 0.8075rem;
+
+}
+.list-card-body ul li:last-child{
+    padding-bottom: 0.78rem;
+}
+.bi-play-circle{
+    color: #8B57FE;
+    font-size: 0.80rem;
+    margin-right: 0.30rem;
+}
+.bi-award{
+    color: #38A169;
+    font-size: 0.80rem;
+    margin-right: 0.30rem;
+}
+.bi-calendar{
+    color: #4CABEA;
+    font-size: 0.80rem;
+    margin-right: 0.30rem;
+}
+.bi-camera-video{
+    color: #64748B;
+    font-size: 0.80rem;
+    margin-right: 0.30rem;
+}
+.bi-clock{
+    color: #F59E52;
+    font-size: 0.80rem;
+}
+
+/* Profile Card */
+.pc-body{
+    color: #64748B;
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+}
+.pc-header{
+}
+.pc-header-pic{
+    
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    
+    position: relative;
+    z-index: 9999;
+
+}
+.pc-header-pic img:first-child{
+    width: 100%;
+    border-radius: 50%;
+    z-index: 9999;
+}
+.pc-header-pic img:last-child{
+    width: 31px;
+    height: 31px;
+    position: absolute;
+    top: 10%;
+    right: -18%;
+    z-index: 99999;
+}
+.pc-header-info{
+    
+}
+.pc-header-info h6{
+    color: #1e293b;
+    font-weight: 600;
+    line-height: 1.2;
+    /* font-family: Inter,"sans-serif"; */
+}
+.pc-header-info p{
+    font-weight: 400;
+    line-height: 2;
+    font-size: 0.75rem;
+    margin: 0rem;
+    padding: 0rem;
+    padding-bottom: 1.2px;
+
+}
+#ratings{
+    font-size: 0.75rem;
+    color: #F79E0B;
+    
+    margin-right: 0.3rem;
+}
+
+.pc-tags-heading{
+    color: #1E293B;
+    font-size: 0.875rem;
+    font-style: 'Inter', sans-serif;
+    font-weight: 500;
+}
+.pc-tags-text{
+    font-size: 0.875rem;
+}
+
+
+.pc-footer{
+
+}
+.pc-footer-text{
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+
+}
+.pc-footer-btn{
+    font-size: 0.766rem;
+    padding: 0.25rem 0.75rem;
+}
+
+
+
+
+
+
+/* Cards */
+
+.Cards{
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-bottom: 115px;
+}
+
+.cards-container{
+    max-width: 1320px;
+    margin: auto;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.cards-con-h{
+    padding: 0rem;
+    margin: 0rem;
+    margin-bottom: 1.5rem;
+    margin-top: 5.5rem;
+}
+.cards-con-h h2{
+    margin: 0rem;
+    padding: 0rem;
+    font-size: 1.5rem;
+    color: #1e293b;
+    font-family: Inter,"sans-serif";
+    font-weight: 600;
+    line-height: 1.5;
+    margin-top: 0;
+    letter-spacing: -.022rem;
+}
+
+.cards-holder{
+    width: 100%;
+    margin-left: 0rem;
+    margin-right: 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    /* border: 10px solid grey; */
+}
+
+.card{
+    transition: box-shadow .25s ease;
+    box-shadow: 0 1px 3px rgba(17,24,39,.09);
+    padding: 0rem 0rem;
+    overflow: hidden;
+    border-radius: 0.5rem !important;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: bold;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 0 0 auto;
+    width: 23.65%;
+    height: fit-content;
+    box-sizing: border-box;
+    border: none;
+}
+.card:hover{
+    box-shadow: 0 0.25rem 0.625rem rgba(17,24,39,.19);
+}
+.card:last-child {
+    margin-right: 0;
+}
+.card-body{
+    padding: 1.5rem;
+    padding-bottom: 1.35rem;
+    background-color: #FFFFFF !important;
+    
+    
+}
+.cardBodyR{
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+.cardR0{
+    margin-left: 0rem;
+    margin-right: 0rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+.cardR0 h3{
+    font-size: 0.9375rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.59;
+    font-weight: 600;
+    letter-spacing: 0.0125rem;
+    display: block;
+}
+.cardR1{
+    
+    
+    color: #64748B; 
+    font-weight: 400;
+    margin: 0rem;
+    margin-top: -0.1rem;
+    padding: 0rem;
+    padding-left: 0.2rem;
+    padding-bottom: 0.90rem;
+
+
+}
+.cardR1-1{
+    margin-right: 0.5rem;
+    font-size: 0.875rem;    
+}
+.cardR1-1 i{
+    font-size: 0.855rem;
+    margin-left: -0.2rem;
+}
+.cardR1-2{
+    color: #754FFE;
+    opacity: 0.6;
+    font-size: 0.875rem;
+}
+.cardR1-3{
+    margin-left: -0.2rem;
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+.cardR2{
+    display: flex;
+    padding: 0rem;
+    padding-left: 0.1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.cardR2-1{
+    color: #F59E0B;
+    font-size: 0.65rem;
+    font-weight: 400;
+    margin-right: 0.25rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+.cardR2-2{
+    color: #F59E0B;
+    font-weight: 400;
+    margin-right: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.cardR2-3{
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-right: 0.25rem;
+
+}
+.card-footer{
+    padding: 0rem;
+    border-top: 0.0625rem solid #e2e8f0;
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    
+}
+.card-ftr-con{
+
+    margin: 0rem;
+    padding: 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.card-ftr-pid-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-ftr-profile{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.card-ftr-pid-con span{
+    margin-left: 0.5rem;
+    color: #64748B;
+    font-weight: 400;
+    font-size: 0.875rem;
+   
+}
+
+.card-ftr-profile img{
+    width: 100%;
+    border-radius: 50%;
+}
+.card-ftr-con .bi-bookmark{
+    color: blue;
+    font-size: 0.675rem;
+
+}
+
+
+
+
+/* Footer CSs Starts */
+#footer-hr-container{
+    background-color: #F1F5F9;
+}
+#footer-hr{
+   
+    color: black;
+    padding: 0rem;
+    width: 88%;
+    opacity: 0.08;
+    margin: auto;
+    margin-bottom: 0rem;
+    z-index: 99999;
+
+    
+}
+
+footer{
+    position: relative;
+    background-color: #F1F5F9;
+    color: #475569;
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin to make the hr identical */
+    padding-top: 0.19rem;
+}
+#footer-container{
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer1{
+    padding-left: 0rem;
+    padding-right: 0rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #475569;
+    line-height: 1.5rem;
+}
+
+.footer2{
+    line-height: 1.5rem;
+    font-size: 0.275rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 0rem;
+    padding-right: 0rem;
+   
+}
+.footer2 a{
+    line-height: 1.5rem;
+    color: #475569;
+    font-size: 0.875rem;
+    text-decoration: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    
+}
+.footer2 a:first-child{
+    padding-left: 0px;
+}
+
+
+
+
+
+/* Media Queries */
+
+
+
+@media (max-width: 1400px){
+    .banner-container{
+        max-width: 1140px;
+    }
+    .cards-container{
+        max-width: 1140px;
+    }    
+}
+
+@media (max-width: 1200px){
+    :root{
+        --fs-heading: 2.5rem;
+        --fs-para: 1.25rem;
+    }
+    .banner-container{
+        max-width: 960px;
+    }
+    .banner-text{
+        padding: 0px;
+    }
+    .banner-img img {
+
+        width: 468px;
+        height: 345.29px;
+    }
+    .banner-text{
+        padding-left: 12px;
+    }
+    .cards-container{
+        max-width: 960px;
+    }  
+}
+
+
+@media only screen and (max-width: 992px) {
+    /* body */
+    :root{
+        --fs-heading: 2.50rem;
+        --fs-para: 1.25rem
+
+    }
+    body{
+        
+        padding-left: 0rem;
+        padding-right: 0rem;
+        
+    }
+    /* Body Ends */
+    /* Navbar */
+    /* #ex1{
+        height: 55px;
+        width: 537.600px;
+        overflow: auto;
+        border: 1px solid black;
+    } */
+    .navbar-toggler{
+        float: left;
+    }
+    #nav-right {
+        position: absolute;
+        right: 3.1875rem;
+        top: 0.5rem;
+    }
+    .navbar-toggler{
+        color: blue;
+        width: 2.25rem;
+        height: 1.875rem;
+        border: 0.0625rem solid blue;
+    }
+    .navbar-toggler-icon{
+        width: 100%;
+        object-fit: contain;
+    }
+    .nav-right-item{
+        margin-left: 0.0625rem;
+        margin-right: 0.1875rem;
+    }
+    .bi-brightness-high-fill{
+        margin-right: 0.4375rem;
+    }
+
+    /* Navbar Ends */
+    /* Banner */
+    .banner-container{
+        max-width: 720px;
+        padding-bottom: 5.5rem;
+    }
+    .banner-text{
+        padding-right: 0rem;
+      
+        
+    }
+   
+
+    .main-bd-right{
+        margin-top: 0rem;
+    }
+
+    .cards-container{
+        max-width: 720px;
+        
+    }
+    .card{
+       width: 48%;
+       margin-top: 20px;
+    }  
+}
+
+
+@media only screen and (max-width: 767px) {
+    .banner-container{
+        max-width: 540px;
+    }
+    .banner-text{
+        padding-right: 0rem;
+        
+    }
+    .bt-inter{
+        display: none;
+    }
+
+    .cards-container{
+        max-width: 540px;
+    }  
+    /* copy the code for navbar and cards of 576 media quries */
+
+
+}
+@media only screen and (max-width: 576px) {
+    
+    
+    :root{
+        --fs-heading: 2.50rem;
+        --fs-para: 1.25rem
+    }
+
+    /* body */
+
+    
+    body{
+        
+        padding-left: 0rem;
+        padding-right: 0rem;
+        
+    }
+
+    /* Body Ends */
+    /* Navbar */
+    
+    .navbar-collapse{
+        position: absolute;
+        top: 3.125rem;
+        width: 100vw;
+        left: 0;
+        transition-duration: 0.3s;
+        height: fit-content !important;
+        
+    }
+    .navbar-collapse ul{
+        display: flex;
+        justify-content: flex-start;
+        align-items: start;
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        
+
+    }
+    .navbar-collapse ul li{
+        width: 100%;
+        text-align: left;
+        border-bottom: 0.0625rem solid black;
+        padding-top: 0.5rem;
+        padding-bottom: 0rem;
+
+    }
+    .navbar-collapse ul li button{
+        width: 100%;
+    }
+    #nav-form{
+        width: 95%;
+        margin: 0rem;
+        margin-top: 0.625rem;
+    }
+    #nav-right {
+        position: absolute;
+        right: 3.1875rem;
+        top: 0.5rem;
+    }
+    .navbar-toggler{
+        color: blue;
+        width: 2.25rem;
+        height: 1.875rem;
+        border: 0.0625rem solid blue;
+    }
+    .navbar-toggler-icon{
+        width: 100%;
+        object-fit: cover;
+    }
+    .nav-right-item{
+        margin-left: 0.0625rem;
+        margin-right: 0.1875rem;
+    }
+    .bi-brightness-high-fill{
+        margin-right: 0.4375rem;
+    }
+
+    /* Navbar ends */
+    /* Banner */
+
+    .banner {
+        width: 100vw;
+        box-sizing: border-box;
+              
+    }
+    .banner-text{
+        padding-left: 0.75rem;
+        padding-right: 0;
+
+    }
+
+    /* Card Responsiveness */
+    
+    .Cards{
+        padding-left: 12px;
+        padding-right: 12px;
+        margin: auto;
+    }
+
+    .card{
+        width: 100%;
+        margin-top: 20px;
+     }  
+
+    /* for footer */
+    #footer-container{
+        background-color: #F1F5F9;
+        padding: 0.5rem 3.9rem;
+        
+        color: #475569;
+        
+    }
+    .footer1 {
+        width: 100%;
+        padding-top: 0rem;
+        text-align: center;
+        font-size: 0.875rem;
+    }
+    .footer2{
+
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        
+        font-size: 0.875rem;
+        font-weight: 100;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-bottom: 0.25rem;
+        padding-top: 0.20rem;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <!--Font Style  -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div id="navbar-container" class="container-fluid">
+            <a id="logo" class="navbar-brand" href="#"><img src="images/logo.svg" alt="Logo Name: Geeks"></a>
+            <!-- button for resposiveness -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar Items  -->
+            <div class="collapse navbar-collapse bg-body" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item dropdown">
+                        <div class="dropdown">
+                            <button id="first-nav-btn" class="dropbtn">Cours    
+                        </div>
+                    </li>
+                    
+                    <form id="nav-form" class="d-flex" role="search">
+                        <i id="nav-form-si" class="bi bi-search"></i>
+                        <input class="form-control me-2" type="search" placeholder="Search Courses" aria-label="Search">
+
+                    </form>
+                </ul>
+
+            </div>
+            <ul id="nav-right">
+                <i class="bi bi-brightness-high-fill nav-right-item"></i>
+                <i class="bi bi-bell nav-right-item">
+                    <div class="notiIcon bellIcon"></div>
+                </i>
+                <li class="nav-right-item">
+                    <div class="dropdown">
+                        <!-- menu deroulant à gauche css  -->
+                        <button class="dropbtn"><i class="bi bi-person-circle"></i> </button>
+                        <div class="dropdown-content">
+                          <a ><%= name %></a>
+                          <a  href="../public/Acceuil.html">ff</a>
+                          
+                          
+                        </div>
+                        
+                 
+
+                      </div>
+                    </div>
+                    
+                  </li>
+                  
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- Banner Section -->
+    <section class="container-fluid banner">
+        <div class="row banner-container">
+            <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 banner-text">
+                <h1 class="fw-semi-bold display-4 ">Getting Started with JavaScript</h1>
+                <p> JavaScript is the popular programming language which powers web pages and web applications. This
+                    course will get you started coding in JavaScript.
+                </p>
+
+                <div class="banner-tags">
+                    <div class=" bt-bookmark"> <i class="bi bi-bookmark"></i>&nbsp;&nbsp; Bookmark</div>
+                    <div class="bt-enrolled"><i class="bi bi-person"></i>&nbsp;1200 Enrolled</div>
+                    <div class="bt-stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>(140)
+                    </div>
+                    <div class="bt-inter"> <i class="bi bi-reception-3"></i>Intermediate</div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>          
+
+    <!-- Main body-->
+    <div class="container main-bd">
+        <div class="row">
+
+            <!-- Main Body Left -->
+            <div class="col-lg-8 main-bd-left">
+                <div class="main-bd-left-con">
+                    <!-- Tabs Buttons -->
+                    <ul class="nav nav-tabs" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="ex1-tab-1" data-bs-toggle="tab" href="#ex1-tabs-1" role="tab"
+                                aria-controls="ex1-tabs-1" aria-selected="true">Contents</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="ex1-tab-2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
+                                aria-controls="ex1-tabs-2" aria-selected="false">Description</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="ex1-tab-5" data-bs-toggle="tab" href="#ex1-tabs-5" role="tab"
+                                aria-controls="ex1-tabs-5" aria-selected="false">FAQ</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tabs Content -->
+                    <div class="tab-content" id="ex1-content">
+                        <!-- Content Tab -->
+                        <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel"
+                            aria-labelledby="ex1-tab-1">
+
+                            <!-- First List Item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample">
+                                    <span>Introduction to JavaScript</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-play-fill"></i>
+                                            Introduction</span>
+                                        <span>1m 7s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-play-fill"></i>
+                                            Installing Development Software</span>
+                                        <span>3m 11s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-play-fill"></i>
+                                            Hello World Project From Github</span>
+                                        <span>2m 33s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Our Sample Website</span>
+                                        <span>2m 15s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- second list item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample2" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample2">
+                                    <span>JavaScript Beginning</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample2">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Introduction</span>
+                                        <span>1m 41s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Adding JavaScript Code to a Web Page</span>
+                                        <span>3m 39s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Working with JavaScript Files</span>
+                                        <span>6m 18s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Formatting Code</span>
+                                        <span>2m 18s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Detecting and Fixing Errors</span>
+                                        <span>3m 14s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Case Sensitivity</span>
+                                        <span>1m 48s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Commenting Code</span>
+                                        <span>2m 24s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Summary</span>
+                                        <span>2m 14s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Third list item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample3" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample3">
+                                    <span>Variables and Constants</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample3">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Introduction</span>
+                                        <span>1m 19s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            What Is a Variable?</span>
+                                        <span>2m 11s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Declaring Variables</span>
+                                        <span>2m 30s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Using let to Declare Variables</span>
+                                        <span>3m 28s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Naming Variables</span>
+                                        <span>3m 14s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Common Errors Using Variables</span>
+                                        <span>3m 30s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Changing Variable Values</span>
+                                        <span>2m 4s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Constants</span>
+                                        <span>3m 15s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            The var Keyword</span>
+                                        <span>2m 20s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Summary</span>
+                                        <span>1m 49s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fourth list item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample4" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample4">
+                                    <span>Program Flow</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample4">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Introduction</span>
+                                        <span>1m 52s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Clip Watched</span>
+                                        <span>4m 27s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Conditionals Using if()</span>
+                                        <span>4m 25s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Truthy and Falsy</span>
+                                        <span>3m 30s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            if ... else</span>
+                                        <span>3m 30s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Comparing === and ==</span>
+                                        <span>1m 52s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            The Ternary Operator</span>
+                                        <span>2m 27s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Block Scope Using let</span>
+                                        <span>2m 21s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Looping with for()</span>
+                                        <span>5m 30s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fifth list item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample5" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample5">
+                                    <span>Functions</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample5">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Introduction</span>
+                                        <span>1m 52s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Function Basics</span>
+                                        <span>2m 46s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Function Expressions</span>
+                                        <span>2m 32s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Passing Information to Functions</span>
+                                        <span>3m 19s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Function Return Values</span>
+                                        <span>3m 13s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Function Scope </span>
+                                        <span>4m 20s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Using Functions to Modify Web Pages</span>
+                                        <span>3m 42s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Summary</span>
+                                        <span>2m 3s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sixth list item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample6" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample6">
+                                    <span>Objects and the DOM</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample6">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Introduction</span>
+                                        <span>1m 48s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Object Properties</span>
+                                        <span>4m 28s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Object Methods</span>
+                                        <span>3m 3s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Passing Objects to Functions</span>
+                                        <span>3m 27s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Standard Built-in Objects</span>
+                                        <span>6m 55s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            The Document Object Model (DOM) </span>
+                                        <span>3m 29s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Styling DOM Elements</span>
+                                        <span>2m 42s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Summary</span>
+                                        <span>2m 47s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Seventh list item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample7" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample7">
+                                    <span>Arrays</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample7">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Introduction</span>
+                                        <span>1m 48s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Object Properties</span>
+                                        <span>4m 28s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Object Methods</span>
+                                        <span>3m 3s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Passing Objects to Functions</span>
+                                        <span>3m 27s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Standard Built-in Objects</span>
+                                        <span>6m 55s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            The Document Object Model (DOM) </span>
+                                        <span>3m 29s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Styling DOM Elements</span>
+                                        <span>2m 42s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Summary</span>
+                                        <span>2m 47s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Eight list item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample8" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample8">
+                                    <span>Scope and Hoisting</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample8">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Introduction</span>
+                                        <span>1m 48s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Object Properties</span>
+                                        <span>4m 28s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Object Methods</span>
+                                        <span>3m 3s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Passing Objects to Functions</span>
+                                        <span>3m 27s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Standard Built-in Objects</span>
+                                        <span>6m 55s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            The Document Object Model (DOM) </span>
+                                        <span>3m 29s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Styling DOM Elements</span>
+                                        <span>2m 42s</span>
+                                    </div>
+                                    <div class="inner-tab-listitem">
+                                        <span><i class="bi bi-lock"></i>
+                                            Summary</span>
+                                        <span>2m 47s</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nint list item -->
+                            <p class="list-item-con">
+                                <a class="list-item" data-bs-toggle="collapse" href="#collapseExample9" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample9">
+                                    <span>Summary</span>
+                                    <span><i class="bi bi-chevron-down"></i>
+                                    </span>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample9">
+                                <!-- <div class="card card-body"> -->
+                                <div class="inner-tab-con">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae esse velit
+                                        eos sunt ab inventore est tenetur blanditiis? Voluptas eius molestiae ad itaque
+                                        tempora nobis minima eveniet aperiam molestias, maiores natus expedita dolores
+                                        ea non possimus magnam corrupt i quas rem unde quo enim porro culpa! Quaerat
+                                        veritatis veniam corrupti iusto.</p>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <!-- Description Tab -->
+                        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                            <div id="dtab-con">
+                                <div class="dtab-heading-con">
+                                    <h3 id="dtab-heading">Course Descriptions</h3>
+                                    <p>If you’re learning to program for the first time, or if
+                                        you’re
+                                        coming from a
+                                        different language, this course, JavaScript: Getting Started, will give you the
+                                        basics for coding in JavaScript. First, you'll discover the types of
+                                        applications that can be built with JavaScript, and the platforms they’ll run
+                                        on.
+                                    </p>
+                                    <p>Next, you’ll explore the basics of the language, giving
+                                        plenty
+                                        of examples.
+                                        Lastly, you’ll put your JavaScript knowledge to work and modify a modern,
+                                        responsive web page. When you’re finished with this course, you’ll have the
+                                        skills and knowledge in JavaScript to create simple programs, create simple web
+                                        applications, and modify web pages.
+                                    </p>
+                                </div>
+                                <div class="dtab-subheading-con">
+                                    <h4 id="dtab-subheading">What you’ll learn </h4>
+                                    <div id="dtab-subheading-list" class="row">
+                                        <div class="dtab-subheading-leftlist col-6">
+                                            <div class="d-flex dtab-list-con">
+                                                <i class="bi bi-check-circle"></i>
+                                                <p class="ms-2 mb-0"> Recognize the importance of
+                                                    understanding your objectives when addressing
+                                                    an audience.</p>
+                                            </div>
+                                            <div class="d-flex dtab-list-con">
+                                                <i class="bi bi-check-circle"></i>
+                                                <p class="ms-2  mb-0"> Identify the fundaments of
+                                                    composing a
+                                                    successful close.</p>
+                                            </div>
+                                            <div class="d-flex dtab-list-con">
+                                                <i class="bi bi-check-circle"></i>
+                                                <p class="ms-2 mb-0"> Explore how to connect with your
+                                                    audience through crafting compelling
+                                                    stories.</p>
+                                            </div>
+                                        </div>
+                                        <div class="dtab-subheading-rightlist col-6">
+                                            <div class="d-flex dtab-list-con">
+                                                <i class="bi bi-check-circle"></i>
+                                                <p class="ms-2  mb-0"> Examine ways to connect with your
+                                                    audience by personalizing your content.
+                                                </p>
+                                            </div>
+                                            <div class="d-flex dtab-list-con">
+                                                <i class="bi bi-check-circle"></i>
+                                                <p class="ms-2  mb-0">Break down the best ways to exude
+                                                    executive presence.</p>
+                                            </div>
+                                            <div class="d-flex dtab-list-con">
+                                                <i class="bi bi-check-circle"></i>
+                                                <p class="ms-2  mb-0"> Explore how to communicate the unknown
+                                                    in an impromptu communication</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>Maecenas viverra condimentum nulla molestie
+                                        condimentum.
+                                        Nunc ex libero,
+                                        feugiat quis lectus vel, ornare euismod ligula. Aenean sit amet arcu nulla.
+                                    </p>
+                                    <p>Duis facilisis ex a urna blandit ultricies. Nullam
+                                        sagittis
+                                        ligula non eros
+                                        semper, nec mattis odio ullamcorper. Phasellus feugiat sit amet leo eget
+                                        consectetur.
+
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Reviews Tab -->
+                        <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                            <div id="rtab-con">
+                                <div class="rtab-heading-con">
+                                    <h4 id="rtab-heading">How students rated this courses</h4>
+                                </div>
+                                <div class="container">
+                                    <div id="rtab-rpanel" class="row">
+                                        <div id="rtab-rpanel-num" class="col-2">
+                                            <h3 id="rtab-rating">4.5</h3>
+                                            <div class="rtab-stars">
+                                                <i class="bi bi-star-fill cardR2-1"></i>
+                                                <i class="bi bi-star-fill cardR2-1"></i>
+                                                <i class="bi bi-star-fill cardR2-1"></i>
+                                                <i class="bi bi-star-fill cardR2-1"></i>
+                                                <i class="bi bi-star-fill cardR2-1"></i>
+                                            </div>
+                                            <p>(Based on 27 reviews)</p>
+                                        </div>
+                                        <div class="col-8 rtab-rpanel-bar">
+                                            <div class="rating-bar-con">
+                                                <div class="rating-bar-color"></div>
+                                            </div>
+                                            <div class="rating-bar-con">
+                                                <div class="rating-bar-color"></div>
+                                            </div>
+                                            <div class="rating-bar-con">
+                                                <div class="rating-bar-color"></div>
+                                            </div>
+                                            <div class="rating-bar-con">
+                                                <div class="rating-bar-color"></div>
+                                            </div>
+                                            <div class="rating-bar-con">
+                                                <div class="rating-bar-color"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 rtab-rpanel-percent">
+                                            <span class="rtab-rpanel-row">
+                                                <span>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                </span>
+                                                <p>50%</p>
+                                            </span>
+                                            <span class="rtab-rpanel-row">
+                                                <span>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                </span>
+                                                <p>36%</p>
+                                            </span>
+                                            <span class="rtab-rpanel-row">
+                                                <span>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                </span>
+                                                <p>9%</p>
+                                            </span>
+                                            <span class="rtab-rpanel-row">
+                                                <span>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                </span>
+                                                <p>3%</p>
+                                            </span>
+                                            <span class="rtab-rpanel-row">
+                                                <span>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                </span>
+                                                <p>2%</p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div id="rtab-reviews">
+                                    <div class="rtab-reviews-header">
+                                        <h4>Reviews</h4>
+                                        <div>
+                                            <form id="nav-form" class="d-flex" role="search">
+                                                <i id="nav-form-si" class="bi bi-search"></i>
+                                                <input class="form-control me-2" type="search"
+                                                    placeholder="Search Review" aria-label="Search">
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="rtab-reviews-body container">
+                                        <div class="row">
+                                            <div class="rtab-reviews-img col-1">
+                                            </div>
+                                            <div class="rtab-reviews-info col">
+                                                <div class="rtab-reviews-info-name">
+                                                    <h4>Max Hawkins</h4>
+                                                    <p>2 Days Ago</p>
+                                                </div>
+                                                <div class="rtab-reviews-info-stars">
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                    <i class="bi bi-star-fill"></i>
+                                                </div>
+                                                <p class="rtab-reviews-text">
+                                                    Lectures were at a really good pace and I never felt lost. The
+                                                    instructor was well informed and allowed me to learn and navigate
+                                                    Figma easily.
+                                                </p>
+                                                <div class="rtab-reviews-feedback">
+                                                    <p>Was this review helpful</p>
+                                                    <div>
+                                                        <button>Yes</button>
+                                                        <button>No</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Transcript Tab -->
+                        <div class="tab-pane fade" id="ex1-tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
+                            <div id="ttab-con">
+                                <div class="ttab-heading-con">
+                                    <h3 id="ttab-heading">Transcript from the "Introduction" Lesson</h3>
+                                </div>
+                                <div class="ttab-body">
+                                    <h4>Course Overview<span class="ttab-transcript-title">[00:00:00]</span></h4>
+                                    <p>My name is John Deo and I work as human duct tape at
+                                        Gatsby, that means that I do a lot of different things. Everything from dev roll
+                                        to writing content to writing code. And I used to work as an architect at IBM. I
+                                        live in Portland, Oregon.</p>
+                                    <h4>Introduction <span class="ttab-transcript-title">[00:00:16]</span></h4>
+                                    <p>We'll dive into GraphQL, the fundamentals of GraphQL.
+                                        We're only gonna use the pieces of it that we need to build in Gatsby. We're not
+                                        gonna be doing a deep dive into what GraphQL is or the language specifics. We're
+                                        also gonna get into MDX. MDX is a way to write React components in your
+                                        markdown.</p>
+                                    <h4>Why Take This Course? <span class="ttab-transcript-title">[00:00:37]</span>
+                                    </h4>
+                                    <p>We'll dive into GraphQL, the fundamentals of GraphQL.
+                                        We're only gonna use the pieces of it that we need to build in Gatsby. We're not
+                                        gonna be doing a deep dive into what GraphQL is or the language specifics. We're
+                                        also gonna get into MDX. MDX is a way to write React components in your
+                                        markdown.</p>
+                                    <h4>A Look at the Demo Application<span
+                                            class="ttab-transcript-title">[00:00:54]</span></h4>
+                                    <p id="ttab-con-secondP">We'll dive into GraphQL, the fundamentals of GraphQL.
+                                        We're only gonna use the pieces of it that we need to build in Gatsby. We're not
+                                        gonna be doing a deep dive into what GraphQL is or the language specifics. We're
+                                        also gonna get into MDX. MDX is a way to write React components in your
+                                        markdown.</p>
+                                    <p>We'll dive into GraphQL, the fundamentals of GraphQL. We're
+                                        only gonna use the
+                                        pieces of it that we need to build in Gatsby. We're not gonna be doing a deep
+                                        dive into what GraphQL is or the language specifics. We're also gonna get into
+                                        MDX. MDX is a way to write React components in your markdown.</p>
+                                    <h4>Summary <span class="ttab-transcript-title">[00:01:31]</span></h4>
+                                    <p>We'll dive into GraphQL, the fundamentals of GraphQL.
+                                        We're only gonna use the pieces of it that we need to build in Gatsby. We're not
+                                        gonna be doing a deep dive into what GraphQL is or the language specifics. We're
+                                        also gonna get into MDX. MDX is a way to write React components in your
+                                        markdown.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Tab -->
+                        <div class="tab-pane fade" id="ex1-tabs-5" role="tabpanel" aria-labelledby="ex1-tab-5">
+                            <div id="ftab-con">
+                                <div class="ftab-heading-con">
+                                    <h3 id="ftab-heading">Course - Frequently Asked Questions</h3>
+                                </div>
+                                <div class="ftab-body">
+                                    <h4>How this course help me to design layout?</h4>
+                                    <p>My name is Jason Woo and I work as human duct tape at Gatsby,
+                                        that means that I do a lot of different things. Everything from dev roll to
+                                        writing content to writing code. And I used to work as an architect at IBM. I
+                                        live in Portland, Oregon.</p>
+                                    <h4>What is important of this course?</h4>
+                                    <p>We'll dive into GraphQL, the fundamentals of GraphQL. We're only
+                                        gonna use the pieces of it that we need to build in Gatsby. We're not gonna be
+                                        doing a deep dive into what GraphQL is or the language specifics. We're also
+                                        gonna get into MDX. MDX is a way to write React components in your markdown.</p>
+                                    <h4>Why Take This Course?</h4>
+                                    <p>We'll dive into GraphQL, the fundamentals of GraphQL. We're only
+                                        gonna use the pieces of it that we need to build in Gatsby. We're not gonna be
+                                        doing a deep dive into what GraphQL is or the language specifics. We're also
+                                        gonna get into MDX. MDX is a way to write React components in your markdown.</p>
+                                    <h4>Is able to create application after this course?</h4>
+                                    <p>We'll dive into GraphQL, the fundamentals of GraphQL. We're only
+                                        gonna use the pieces of it that we need to build in Gatsby. We're not gonna be
+                                        doing a deep dive into what GraphQL is or the language specifics. We're also
+                                        gonna get into MDX. MDX is a way to write React components in your markdown.</p>
+                                </div>
+                                <div class="ftab-footer-p">
+                                    <p>We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use the
+                                        pieces of it that we need to build in Gatsby. We're not gonna be doing a deep
+                                        dive into what GraphQL is or the language specifics. We're also gonna get into
+                                        MDX. MDX is a way to write React components in your markdown.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Body Right -->
+            <div class="col-lg-4 main-bd-right">
+
+                <!-- Main Body Js Card -->
+                <div class="mb-js-card">
+                    <div class="js-card-img">
+                        <!-- insert the video icon -->
+                    </div>
+                    <div class="js-card-body">
+                        <div class="js-card-price">
+                            <span class="col-1">$600</span>
+                            <del>$750</del>
+                        </div>
+                        <div class="js-card-btn d-grid">
+                            <button class="btn btn-primary mb-2 js-card-btn1">Start Free Month</button>
+                            <button class="btn btn-outline-primary js-card-btn2">Get Full Access</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Body ListGroup Card -->
+                <div class="mb-list-card">
+                    <div class="list-card-header">
+                        What's included
+                    </div>
+                    <div class="list-card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="bi bi-play-circle"></i> 12 hours video</li>
+                            <li class="list-group-item"><i class="bi bi-award"></i> Certificate </li>
+                            <li class="list-group-item"><i class="bi bi-calendar"></i> 12 Article </li>
+                            <li class="list-group-item"><i class="bi bi-camera-video"></i> Watch Offline </li>
+                            <li class="list-group-item"><i class="bi bi-clock"></i> Lifetime access </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Profle Card -->
+                <div class="profile-card">
+                    <div class="card-body pc-body">
+                        <div class="pc-header d-flex align-items-center">
+                            <div class="pc-header-pic"">
+                                <img src=" images/profile.jpg" alt="">
+                                <img src=" images/profileSTar.svg" alt="">
+                            </div>
+                            <div class="pc-header-info flex-column ms-4 pt-1">
+                                <h6 class="p-0 m-0">Jenny Wilson</h6>
+                                <p>Front-end Developer, Designer</p>
+                                <p>
+                                    <span id="ratings">4.5</span>
+                                    Instructor Rating
+                                </p>
+                            </div>
+
+
+                        </div>
+                        <div class="pc-tags border-top mt-3 mb-3 border-bottom g-0 row">
+                            <div class="col-4 border-end pt-3 ps-2">
+                                <h7 class="pc-tags-heading">11,604</h7>
+                                <p class="pc-tags-text">Students</p>
+                            </div>
+                            <div class="col-4 border-end pt-3 ps-3">
+                                <h7 class="pc-tags-heading">32</h7>
+                                <p class="pc-tags-text">Courses</p>
+                            </div>
+                            <div class="col-4 pt-3 ps-3">
+                                <h7 class="pc-tags-heading">12,230</h7>
+                                <p class="pc-tags-text">Reviews</p>
+                            </div>
+                        </div>
+                        <div class="pc-footer">
+                            <p class="pc-footer-text">I am an Innovation designer focussing on UX/UI based in Berlin. As
+                                a creative resident at
+                                Figma explored the city of the future and how new technologies.</p>
+                            <a href="l" class="btn btn-outline-secondary btn-sm pc-footer-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards  -->
+    <div class="Cards">
+        <div class="cards-container">
+
+            <!-- Card Header -->
+            <div class="cards-con-h">
+                <h2 class="cards-con-heading"> Related Courses </h2>
+            </div>
+
+            <!-- Cards -->
+            <div class="cards-con-b">
+                <div class="cards-holder row">
+
+                    <!-- Card 1 -->
+                    <div class="card col-lg-3">
+                        <!-- Card Banner Image -->
+                        <img class="card-img-top" src="images/card1.jpg" alt="Card image cap">
+
+                        <!-- card Body -->
+                        <div class="card-body col">
+                            <div class="row cardBodyR">
+                                <div class="cardR0">
+
+                                    <h3 class="">A Complete Beginner’s Guide to JavaScript</h3>
+
+                                </div>
+                                <div class="cardR1">
+                                    <span class="cardR1-1"><i class="bi bi-clock"></i> 4h 10m</span>
+                                    <span class="cardR1-2"><i class="bi bi-reception-3"></i></span>
+                                    <span class="cardR1-3">Advance</span>
+                                </div>
+                                <div class="cardR2">
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-half cardR2-1"></i>
+                                    <span class="cardR2-2">3.5</span>
+                                    <span class="cardR2-3">(7,500)</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- card Footer -->
+                        <div class="card-body col card-footer">
+                            <div class="card-ftr-con">
+                                <div class="card-ftr-pid-con">
+
+                                    <div class="card-ftr-profile"><img src="images/card1Profile.jpg" alt="">
+                                    </div>
+                                    <span>Jenny Wilson</span>
+                                </div>
+                                <div class="card-ftr-bookmark"><i class="bi bi-bookmark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="card col-lg-3">
+                        <!-- Card Banner Image -->
+                        <img class="card-img-top" src="images/card2.jpg" alt="Card image cap">
+
+                        <!-- card Body -->
+                        <div class="card-body col">
+                            <div class="row cardBodyR">
+                                <div class="cardR0">
+
+                                    <h3 class="">Applying JavaScript and using the console.</h3>
+
+                                </div>
+                                <div class="cardR1">
+                                    <span class="cardR1-1"><i class="bi bi-clock"></i> 2h 46m</span>
+                                    <span class="cardR1-2"><i class="bi bi-reception-3"></i></span>
+                                    <span class="cardR1-3">Beginner</span>
+                                </div>
+                                <div class="cardR2">
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-half cardR2-1"></i>
+                                    <span class="cardR2-2">2.5</span>
+                                    <span class="cardR2-3">(19,500)</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- card Footer -->
+                        <div class="card-body col card-footer">
+                            <div class="card-ftr-con">
+                                <div class="card-ftr-pid-con">
+
+                                    <div class="card-ftr-profile"><img src="images/card2Profile.jpg" alt="">
+                                    </div>
+                                    <span>Guy Hawkins</span>
+                                </div>
+                                <div class="card-ftr-bookmark"><i class="bi bi-bookmark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="card col-lg-3">
+                        <!-- Card Banner Image -->
+                        <img class="card-img-top" src="images/card3.jpg" alt="Card image cap">
+
+                        <!-- card Body -->
+                        <div class="card-body col">
+                            <div class="row cardBodyR">
+                                <div class="cardR0">
+
+                                    <h3 class="">Creating a Custom Event in Javascript</h3>
+
+                                </div>
+                                <div class="cardR1">
+                                    <span class="cardR1-1"><i class="bi bi-clock"></i> 2h 46m</span>
+                                    <span class="cardR1-2"><i class="bi bi-reception-3"></i></span>
+                                    <span class="cardR1-3">Beginner</span>
+                                </div>
+                                <div class="cardR2">
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-half cardR2-1"></i>
+                                    <span class="cardR2-2">4.5</span>
+                                    <span class="cardR2-3">(9,300)</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- card Footer -->
+                        <div class="card-body col card-footer">
+                            <div class="card-ftr-con">
+                                <div class="card-ftr-pid-con">
+
+                                    <div class="card-ftr-profile"><img src="images/card3Profile.jpg" alt="">
+                                    </div>
+                                    <span>Juanita Bell</span>
+                                </div>
+                                <div class="card-ftr-bookmark"><i class="bi bi-bookmark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="card col-lg-3">
+                        <!-- Card Banner Image -->
+                        <img class="card-img-top" src="images/card4.jpg" alt="Card image cap">
+
+                        <!-- card Body -->
+                        <div class="card-body col">
+                            <div class="row cardBodyR">
+                                <div class="cardR0">
+
+                                    <h3 class="">Morden JavaScript Beginner Tutorial - Simple</h3>
+
+                                </div>
+                                <div class="cardR1">
+                                    <span class="cardR1-1"><i class="bi bi-clock"></i> 2h 46m</span>
+                                    <span class="cardR1-2"><i class="bi bi-reception-3"></i></span>
+                                    <span class="cardR1-3">Beginner</span>
+                                </div>
+                                <div class="cardR2">
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-fill cardR2-1"></i>
+                                    <i class="bi bi-star-half cardR2-1"></i>
+                                    <span class="cardR2-2">4.5</span>
+                                    <span class="cardR2-3">(7,800)</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- card Footer -->
+                        <div class="card-body col card-footer">
+                            <div class="card-ftr-con">
+                                <div class="card-ftr-pid-con">
+
+                                    <div class="card-ftr-profile"><img src="images/card4Profile.jpg" alt="">
+                                    </div>
+                                    <span>Ted Hawkins</span>
+                                </div>
+                                <div class="card-ftr-bookmark"><i class="bi bi-bookmark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-hr-container">
+        <hr id="footer-hr">
+    </div>
+    <footer class="footer">
+        <div id="footer-container" class="row container">
+            <div class="col-md-6 col-sm-12 footer1">© 2023 Geeks. All Rights Reserved.</div>
+            <div class="col-md-6 col-sm-12 footer2">
+                <a href="">Privacy</a>
+                <a href="">Terms</a>
+                <a href="">Feedback</a>
+                <a href="">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<!-- Bootstrap Script JavaScript Files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+<script src="js/swiper-bundle.min.js"></script>
+<script src="js/js.js"></script>
+
+</html>

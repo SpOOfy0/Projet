@@ -56,6 +56,20 @@ const business = {
         else return { success: false, message: "User ID not found." };
     },
 
+    //Method to add corses to a user
+    addCoursesToUser : function(userId, courses){
+        let numberOfUsersUpdated = data.addCoursesToUser(userId);
+        if(numberOfUsersUpdated) return { success: true, message: "Courses added successfully." };
+        else return { success: false, message: "Error adding courses." };
+    },
+
+    //Method to remove corses to a user
+    removeCoursesFromUser : function(userId, courses){
+        let numberOfUsersUpdated = data.removeCoursesFromUser(userId, courses);
+        if(numberOfUsersUpdated) return { success: true, message: "Courses removed successfully." };
+        else return { success: false, message: "Error removing courses." };
+    }
+
     
 };
 

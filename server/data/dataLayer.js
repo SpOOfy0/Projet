@@ -97,7 +97,36 @@ let data = {
             // If the user doesn't exist, return 0
             return 0;
         }
-    }
+    },
+    // Cette fonction récupère les cours d'un client en utilisant son ID
+        addCourseToClient: function(clientId, course) {
+            const clients = this.getAllClients();
+            const client = clients.find(user => user.id === clientId);
+            if (client) {
+                client.cours.push(course);
+                this.updateUser(client);
+                return true;
+            } else {
+                return false;
+            }
+        },
+
+        removeCourseFromClient: function(clientId, course) {
+            const clients = this.getAllClients();
+            const client = clients.find(user => user.id === clientId);
+            if (client) {
+                const courseIndex = client.cours.indexOf(course);
+                if (courseIndex !== -1) {
+                    client.cours.splice(courseIndex, 1);
+                    this.updateUser(client);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        },
 }
 
 module.exports = data;
